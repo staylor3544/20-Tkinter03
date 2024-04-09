@@ -5,7 +5,7 @@ import tkinter as tk
 # In this module, all of the _todo_ items will be in one comment because you
 # will be modifying the same block of code as you go.
 #
-# TODO: 1. (1 pt)
+# DONE: 1. (1 pt)
 #
 #   First, create a tkinter window called window.
 #
@@ -15,7 +15,7 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 #
-# TODO: 2. (5 pts)
+# DONE: 2. (5 pts)
 #
 #   Now, create two frames in your window.
 #
@@ -35,3 +35,35 @@ import tkinter as tk
 #   Once you have done this, then change the above _TODO_ to DONE.
 #
 ###############################################################################
+window = tk.Tk()
+window.title("Window")
+
+frame_colors = ["#00008B", "#800080"]
+
+frames = []
+
+for i in range(2):
+    window.columnconfigure(i, weight=1, minsize=75)
+    window.rowconfigure(i, weight=1, minsize=50)
+    for x in range(2):
+        frame = tk.Frame(
+            window,
+            bg = frame_colors[x],
+            relief = "sunken",
+            borderwidth = 3,
+            )
+        frame.grid(row = i, column = x, pady=5, padx=5,)
+        frame.grid_columnconfigure(x, weight=1)
+        frames.append(frame)
+
+labels = ["Frame A", "Frame B"] 
+label_colors = ["#FBCEB1", "#FFFF8F"] 
+for y, label_text in enumerate(labels):
+    label = tk.Label(
+        frames[y], 
+        text = label_text,
+        bg = label_colors[y]
+        )
+    label.pack()
+
+window.mainloop()
